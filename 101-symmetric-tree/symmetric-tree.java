@@ -20,7 +20,11 @@ class Solution {
     public boolean isSymmetric(TreeNode root) {
         // if(root==null)return true;
         // Inverted(root.left);
-        return(isSameTree(Inverted(root.left),root.right)) ;
+        // return(isSameTree(Inverted(root.left),root.right)) ;
+
+        // or
+        root.left= Inverted(root.left);
+        return(isSameTree(root.left,root.right));
         
     }
 }
