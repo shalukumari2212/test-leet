@@ -22,7 +22,7 @@ class Solution {
         ListNode temp= reverseList(slow.next);
         slow.next=temp;
         ListNode t1=head;
-        ListNode t2= temp;
+        ListNode t2= slow.next;
         while(t2!=null){
             if(t1.val!=t2.val) return false;
             t1=t1.next;
