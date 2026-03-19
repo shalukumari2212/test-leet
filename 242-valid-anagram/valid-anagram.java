@@ -15,8 +15,9 @@ class Solution {
         helper(mp,s);
         helper(mt,t);
         
-        if(mp.equals(mt)) return true;
-        else return false;
+        // if(mp.equals(mt)) return true;
+        // else return false;
+        return mp.equals(mt);
         
     }
 };
