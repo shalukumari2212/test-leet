@@ -22,8 +22,8 @@ class Solution {
         if(isPerfectSqr(i)) dp[i] = 1;
         else{
             int min= Integer.MAX_VALUE;
-            for(int j=1;j*j<=i;j++){
-              int count= dp[j*j]+dp[i-j*j];
+            for(int j=1;j<=i/2;j++){
+              int count= dp[j]+dp[i-j];
               min=Math.min(min,count);
             }
             dp[i]=min;
