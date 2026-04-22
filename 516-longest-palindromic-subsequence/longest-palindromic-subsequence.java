@@ -1,36 +1,32 @@
 class Solution {
-    public int lps(int i,int j,StringBuilder str,int[][]dp){
-       if(i>j) return 0;
-       if(i==j) return 1;
-       if(dp[i][j]!=-1) return dp[i][j];
-       if(str.charAt(i)== str.charAt(j)) return dp[i][j]= 2+ lps(i+1,j-1,str,dp);
-       else return dp[i][j]= Math.max(lps(i,j-1,str,dp) , lps(i+1,j,str,dp));
+    public int lcs(int i,int j , StringBuilder a,StringBuilder b,int[][]dp){
+      if(i==-1 || j==-1) return 0;
+      if(dp[i][j]!=-1) return dp[i][j];
+      if(a.charAt(i) == b.charAt(j)) return dp[i][j]= 1+lcs(i-1,j-1,a,b,dp);
+      else return dp[i][j]= Math.max(lcs(i,j-1,a,b,dp),lcs(i-1,j,a,b,dp));
+    }
+    public int lcs2(String str1, String str2){
+        int n=str1.length();
+        int m=str2.length();
+        StringBuilder a = new StringBuilder(str1);
+        StringBuilder b = new StringBuilder(str2);
+        int[][]dp= new int[n][m];
+        for(int i=0;i<n;i++){
+          for(int j=0;j<m;j++) dp[i][j]=-1;
+        }
+        return lcs(n-1,m-1,a,b,dp);
+    }
+    public String reverseString(String str){
+     StringBuilder s = new StringBuilder(str);
+     s.reverse();
+     return s.toString();
+     
+
     }
    
     public int longestPalindromeSubseq(String str) {
-      int n= str.length();
-      StringBuilder a = new StringBuilder(str);
-      int[][]dp= new int[n][n];
-      for(int i=0;i<n;i++){
-        for(int j=i;j<n;j++) dp[i][j]=-1;
-      }
-      return lps(0,n-1,a,dp);
+      return lcs2(str,reverseString(str));
+
     }
 }
 
-//  public int lps( int  i, int j,StringBuilder s,int[][]dp ){
-    //  if(i>j) return 0;
-    //  if(i==j) return 1;
-    //  if(dp[i][j]!= -1) return dp[i][j];
-    //  if(s.charAt(i) == s.charAt(j)) return dp[i][j]=  2 + lps(i+1 ,j-1 ,s,dp);
-    //  else return dp[i][j]=Math.max(lps(i+1,j,s,dp) , lps(i,j-1,s,dp));
-    // }
-
-    //  StringBuilder s= new StringBuilder(str);
-    //     int n= s.length();
-
-    //     int[][]dp= new int[n][n];
-    //     for(int i = n-1; i >= 0; i--){
-    //       for(int j = i; j < n; j++) dp[i][j] =-1;          
-    //     }
-    //     return lps(0,n-1,s,dp);
