@@ -11,7 +11,7 @@ class Solution {
       int n= str.length();
       StringBuilder a = new StringBuilder(str);
       int[][]dp= new int[n][n];
-      for(int i=n-1;i>=0;i--){
+      for(int i=0;i<n;i++){
         for(int j=i;j<n;j++) dp[i][j]=-1;
       }
       return lps(0,n-1,a,dp);
