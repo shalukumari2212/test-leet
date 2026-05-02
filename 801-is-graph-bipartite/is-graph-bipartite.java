@@ -8,7 +8,7 @@ class Solution {
             int front= q.remove();
             for(int ele : adj[front]){
                 if(visit[ele] ==-1){
-                    visit[ele] = visit[front]+1;
+                    visit[ele] = 1-visit[front];
                     q.add(ele);
                 }
                 else if(visit[front]== visit[ele]){
