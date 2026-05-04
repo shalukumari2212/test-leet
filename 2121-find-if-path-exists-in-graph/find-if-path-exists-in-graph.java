@@ -14,9 +14,15 @@ class Solution {
 
             
         }
-       
- return;
+       return;
     }
+    public void dfs(int i,List<List<Integer>>adj,boolean[] visit ) {
+        visit[i]=true;
+        for(int ele: adj.get(i)){
+            if(!visit[ele]) dfs(ele,adj,visit);
+        }
+    }
+
     public boolean validPath(int n, int[][] edges, int source, int destination) {
         List<List<Integer>>adj = new ArrayList<>();
         for(int i=0;i<n;i++){
@@ -33,7 +39,8 @@ class Solution {
 
         visit[destination] =true;
 
-        bfs(destination ,adj,visit );
+        // bfs(destination ,adj,visit );
+        dfs(destination ,adj,visit );
         if(visit[source] == true) return true;
         return false;
 
