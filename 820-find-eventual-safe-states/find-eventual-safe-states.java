@@ -2,19 +2,21 @@ class Solution {
     public List<Integer> eventualSafeNodes(int[][] graph) {
         List<List<Integer>>adj = new ArrayList<>();
         int n =graph.length;
+        int[] indegree = new int[n];
         for(int i=0;i<n;i++){
             adj.add(new ArrayList<>());
         }
        for(int i=0;i<graph.length;i++){
             for(int ele : graph[i]){
                 adj.get(ele).add(i);
+                 indegree[i]++;
             }
         }
-        int[] indegree = new int[n];
-        for(int i=0;i<n;i++){
-            for(int ele: adj.get(i))
-            indegree[ele]++;
-        }
+        // int[] indegree = new int[n];
+        // for(int i=0;i<n;i++){
+        //     for(int ele: adj.get(i))
+        //     indegree[ele]++;
+        // }
 
         Queue<Integer> q= new LinkedList<>();
         List<Integer>ans = new ArrayList<>();
