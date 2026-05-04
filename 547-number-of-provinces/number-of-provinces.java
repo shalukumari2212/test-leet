@@ -16,16 +16,31 @@ class Solution {
         }
         return;
     }
+    public void dfs(int i ,int[][] adj, boolean[]isVisit) {
+       isVisit[i]= true;
+       for(int j=0;j<adj.length;j++){
+        if(!isVisit[j] && adj[i][j]==1){
+            dfs(j,adj,isVisit);
+        }
+       } 
+
+    }
     public int findCircleNum(int[][] adj) {
         int n = adj.length;
         int count=0;
         boolean[]isVisit = new boolean[n];
-        for(int i=0;i<n;i++){
+        // for(int i=0;i<n;i++){
+        //     if(isVisit[i]==false){
+        //         bfs(i,adj,isVisit);
+        //         count++;
+        //     }
+        // } 
+         for(int i=0;i<n;i++){
             if(isVisit[i]==false){
-                bfs(i,adj,isVisit);
+                dfs(i,adj,isVisit);
                 count++;
             }
-        } 
+        }
         return count;
     }
 }
