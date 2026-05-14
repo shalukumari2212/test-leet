@@ -25,7 +25,7 @@ class Solution {
             sum+= dist;
             for(int i=0;i<n;i++){
                 if(i==node || i==parent) continue;
-                if(visit[i]==true) continue;
+                // if(visit[i]==true) continue;
                 int x1= points[node][0];
                 int y1= points[node][1];
                 int x2= points[i][0];
