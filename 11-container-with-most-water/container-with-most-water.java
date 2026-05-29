@@ -7,8 +7,10 @@ class Solution {
             int wid = (rp-lp);
             int hgt= Math.min(height[lp] ,height[rp]);
             int area= wid* hgt;
+            
             max= Math.max(area ,max);
-            if(height[lp] < height[rp]) lp++;
+             
+            if(height[lp] < height[rp]) lp++;  
             else rp--;
         }
         return max;
